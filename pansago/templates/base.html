@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="/static/css/font-awesome.min.css">
         <link rel="stylesheet" href="/static/css/bootstrap.css">
         <link rel="stylesheet" href="/static/css/magnific-popup.css">
-        <!-- <link rel="stylesheet" href="/static/css/jquery-ui.css">				 -->
+        <link rel="stylesheet" href="/static/css/jquery-ui.css">				
         <link rel="stylesheet" href="/static/css/nice-select.css">							
         <link rel="stylesheet" href="/static/css/animate.min.css">
         <link rel="stylesheet" href="/static/css/owl.carousel.css">				
@@ -41,17 +41,16 @@
               <nav id="nav-menu-container">
                 <ul class="nav-menu">
                   <li><a href="/index">Home</a></li>
-                  <li><a href="/record/teamyear">팀순위</a></li>
-                  <li class="menu-has-children"><a href="#">선수 기록실</a>
+                  <li class="menu-has-children"><a href="#">Chart</a>
                     <ul>
-                      <li><a href="/record/pitcherList">투수기록</a></li>
-                      <li><a href="/record/hitterList">타자기록</a></li>
+                      <li><a href="/#">적용법률별</a></li>
+                      <li><a href="/#">사건유형별</a></li>
                     </ul>
                   </li>
-                  <li class="menu-has-children"><a href="#">경기 기록실</a>
+                  <li class="menu-has-children"><a href="#">Wordcloud</a>
                     <ul>
-                      <li><a href="/record/recordList">날짜별 경기기록</a></li>
-                      <li><a href="/record/highlight">하이라이트 영상</a></li>
+                      <li><a href="#">적용법률별</a></li>
+                      <li><a href="#">사건유형별</a></li>
                     </ul>
                   </li>
                   <!-- <li class="menu-has-children"><a href="">Pages</a>
@@ -65,20 +64,6 @@
                       </li>					                		
                     </ul>
                   </li>					          					          		           -->
-                  <li><a href="/board/boardList">응원게시판</a></li>
-                  {% if 'userId' in request.session %}
-                    <li class="menu-has-children"><a href="#">{{request.session.userName}}님 환영합니다^^</a>
-                        <ul>
-                            <li><a href="/member/updateInfo">내정보수정</a></li>
-                            <li><a href="/member/updatePW">비밀번호변경</a></li>
-                            <li><a href="/member/delete">회원탈퇴</a></li>
-                            <li><a href="/member/logout">로그아웃</a></li>
-                        </ul>
-                    </li>                      
-                  {% else %}
-                      <li><a href="/member/login">로그인</a></li>
-                      <li><a href="/member/join">회원가입</a></li>
-                  {% endif %}	
                 </ul>
               </nav><!-- #nav-menu-container -->		    		
             </div>
@@ -90,11 +75,10 @@
           <div class="container">
               <div class="row fullscreen align-items-center justify-content-between">
                   <div class="col-lg-6 col-md-6 banner-left">
-                      <h1>All that KBO</h1>
-                      <p>
-                          KBO의 모든 것!!
-                      </p>
-                      <a href="/static/src/2020.docx" download class="primary-btn text-uppercase">2020년 KBO 리그 일정</a>
+                      <!-- <h1>All that KBO</h1> -->
+                      <!-- <p> -->
+                          <!-- KBO의 모든 것!! -->
+                      <!-- </p> -->
                   </div>
                   <!-- <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end">
                       <img class="img-fluid" src="/static/src/img/hero-img.png" alt="">
@@ -107,7 +91,7 @@
       {% block content %}{% endblock %}
       
       <!-- Start brands Area -->
-      <section class="brands-area">
+      <!-- <section class="brands-area">
           <div class="container">
               <div class="brand-wrap">
                   <div class="row align-items-center active-brand-carusel justify-content-start no-gutters">
@@ -132,11 +116,11 @@
                   </div>
               </div>
           </div>
-      </section>
+      </section> -->
       <!-- End brands Area -->
 
       <!-- start footer Area -->
-      <footer class="footer-area section-gap">
+      <!-- <footer class="footer-area section-gap">
           <div class="container">
               <div class="row">
                   <div class="col-lg-5 col-md-6 col-sm-6">
@@ -146,9 +130,9 @@
                               We have tested a number of registry fix and clean utilities and present our top 3 list on our site for your convenience.
                           </p>
                           <p class="footer-text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                      </div>
+                      <!-- </div>
                   </div>
                   <div class="col-lg-5 col-md-6 col-sm-6">
                       <div class="single-footer-widget">
@@ -183,10 +167,10 @@
                   </div>
               </div>
           </div>
-      </footer>
+      </footer> --> 
       <!-- End footer Area -->		
 
-      <script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
+      <!-- <script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
       <script src="/static/js/popper.min.js"></script>
       <script src="/static/js/vendor/bootstrap.min.js"></script>			
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>			
@@ -203,7 +187,7 @@
       <script src="/static/js/simple-skillbar.js"></script>							
       <script src="/static/js/owl.carousel.min.js"></script>		
       <script src="/static/js/mail-script.js"></script>	
-      <script src="/static/js/main.js"></script>
+      <script src="/static/js/main.js"></script> -->
 
       {% block script %}{% endblock %}
   </body>

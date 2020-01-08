@@ -10,4 +10,10 @@ PansaGo
         <img src="/static/src/google.png" style="max-width: 100%; height: auto;">
     </div>
 </div>
+<div>
+    <form name=google_search onsubmit="javascript:this.q.value=this.q.value + 
+    ' site:http://127.0.0.1:8000/:'" action=http://www.google.co.kr/search method=get>
+    <input size=25 name=q><input type=submit value=검색>
+    </form>
+</div>
 {% endblock %}
