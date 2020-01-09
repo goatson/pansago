@@ -6,7 +6,8 @@
 *.pyc 
 __pycache__ 
 local_settings.py 
-db.sqlite3 
+db.sqlite3
 media
 law_list_detail.csv
 law_list.csv
+pansago/db.sqlite3
