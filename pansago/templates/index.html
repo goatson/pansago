@@ -5,15 +5,18 @@ PansaGo
 {% endblock %}
 
 {% block content %}
-<div class="container_index">
-    <div class="row justify-content-center">
-        <img src="/static/src/google.png" style="max-width: 100%; height: auto;">
+<div class="container">
+    <img src="/static/src/gogle.png" style="max-width: 800%; height: auto;">
+    <div class='search'>
+        <input type='text' size="55px" placeholder="">
+        <button>검색</button>
     </div>
+    
 </div>
-<div>
-    <form name=google_search onsubmit="javascript:this.q.value=this.q.value + 
-    ' site:http://127.0.0.1:8000/:'" action=http://www.google.co.kr/search method=get>
-    <input size=25 name=q><input type=submit value=검색>
-    </form>
-</div>
+
+<!-- <div class="form-inline" style="margin-top:5px">
+        <label style="width:500"></label>
+        <input type="text" name="wr" class="form-control" placeholder="" />
+</div> -->
+
 {% endblock %}

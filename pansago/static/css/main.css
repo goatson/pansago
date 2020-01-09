@@ -2041,8 +2041,9 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 .main-menu {
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-bottom: 200px;
+  padding-top: 2000px;
+  padding-right: 100%;
 }
 
 #header {
@@ -2439,7 +2440,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /*-------- Start Banner Area ------------*/
 .banner-area {
-  background: #f0f0f0;
+  background: #ffffff;
 }
 
 .banner-area .fullscreen {
