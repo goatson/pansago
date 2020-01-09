@@ -4,6 +4,7 @@ import xml.etree.ElementTree as et
 import csv
 import re
 
+# html 태그 제거 메서드
 def substringTags(text):
     result = re.sub('<(/)?([a-zA-Z]*)(-[a-zA-Z]*)?(-[a-zA-Z]*)?(-[a-zA-Z]*)?(\\s[a-zA-Z]*(\\s)?(\\s)?=[^>]*)?(\\s)*(/)?>', '', text)
 
