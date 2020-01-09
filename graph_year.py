@@ -28,7 +28,7 @@ prec['law_count'] = 1
 # 선고일자에서 앞 4자리를 슬라이스 후 연도 컬럼 생성
 prec['law_year'] = prec['law_date'].str.slice(stop=4)
 
-# print(prec['law_ysear'])
+# print(prec['law_year'])
 
 # 스타일 서식 지정
 plt.style.use('ggplot')
