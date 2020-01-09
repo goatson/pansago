@@ -1,10 +1,15 @@
-from django.shortcuts import render
-# Create your views here.
-from .models import Prec
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator
 import csv
+import json
+import sqlite3
+import pandas as pd
+import numpy as np
+from pansago.law.models import Prec
 
-def index(request) :
-    with open('/static/data/law_list_detail.csv', 'r', encoding='utf-8') as f:
+def savedata():
+    with open('./law_list_detail.csv', 'r', encoding='utf-8') as f:
         rdr = csv.reader(f)
         for line in rdr:
             law_no = line[0]
@@ -26,5 +31,4 @@ def index(request) :
             prec = Prec(law_no=law_no, law_title=law_title, law_event_no=law_event_no, law_date=law_date, law_seongo=law_seongo, law_court_name=law_court_name, law_court_code=law_court_code, law_event_type=law_event_type, law_event_code=law_event_code, law_result=law_result, law_judge= law_judge, law_judge_summary= law_judge_summary, law_ref=law_ref, law_ref_precedent=law_ref_precedent, law_content=law_content)
             prec.save()
 
-    return render(request, 'index.html') ## templates 밑에 바로 읽음
-    
+
