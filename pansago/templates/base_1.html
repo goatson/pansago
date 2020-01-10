@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/src/pavicon.png">
+
+    <link rel="stylesheet" href="/static/css/mystyle.css">
+    <link rel="stylesheet" href="/static/css/_bootswatch.scss">
+    <link rel="stylesheet" href="/static/css/_variables.scss">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/jquery-ui.css">
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.css">				
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/linearicons.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+
+</head>
+<body>
+    
+    <div class="bs-component" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="menu-has-children"><a href="#">Chart</a>
+                        <ul>
+                          <li><a href="/#">적용법률별</a></li>
+                          <li><a href="/#">사건유형별</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-has-children"><a href="#">Wordcloud</a>
+                        <ul>
+                          <li><a href="#">적용법률별</a></li>
+                          <li><a href="#">사건유형별</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+            </div>
+        </nav>
+    </div>
+
+{% block content %}{% endblock %}	
+
+
+      <!-- <script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
+      <script src="/static/js/popper.min.js"></script>
+      <script src="/static/js/vendor/bootstrap.min.js"></script>			
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>			
+      <script src="/static/js/easing.min.js"></script>			
+      <script src="/static/js/hoverIntent.js"></script>
+      <script src="/static/js/superfish.min.js"></script>	
+      <script src="/static/js/jquery.ajaxchimp.min.js"></script>
+      <script src="/static/js/jquery.magnific-popup.min.js"></script>	
+      <script src="/static/js/jquery.tabs.min.js"></script>						
+      <script src="/static/js/jquery.nice-select.min.js"></script>	
+      <script src="/static/js/isotope.pkgd.min.js"></script>			
+      <script src="/static/js/waypoints.min.js"></script>
+      <script src="/static/js/jquery.counterup.min.js"></script>
+      <script src="/static/js/simple-skillbar.js"></script>							
+      <script src="/static/js/owl.carousel.min.js"></script>		
+      <script src="/static/js/mail-script.js"></script>	
+      <script src="/static/js/main.js"></script> -->
+      <script src="/static/js/pansago.js"></script>
+
+</body>
+</html>  
