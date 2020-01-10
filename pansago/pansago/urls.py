@@ -20,5 +20,6 @@ import law.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', law.views.index, name='index'),
-    path('', law.views.index, name='index')
+    path('', law.views.index, name='index'),
+    path('preclist/', law.views.preclist, name='preclist')
 ]
