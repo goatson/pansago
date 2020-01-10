@@ -28,14 +28,13 @@ prec['law_count'] = 1
 # 선고일자에서 앞 4자리를 슬라이스 후 연도 컬럼 생성
 prec['law_year'] = prec['law_date'].str.slice(stop=4)
 
-# print(prec['law_year'])
+# 1991년 데이터 삭제
+prec = prec[prec['law_year'] != '1991']
+
+print(prec['law_year'])
 
 # 스타일 서식 지정
 plt.style.use('ggplot')
-
-prec_grouped = prec.groupby(['law_year', 'law_event_type']).count()
-
-# print(prec_grouped['law_no'])
 
 prec_pivot = pd.pivot_table(prec, index='law_year', columns='law_event_type', values='law_count', aggfunc='sum')
 print(prec_pivot)
@@ -47,7 +46,7 @@ ax1.set_ylim(0, 3000)
 ax1.set_xlabel('연도', size=20)
 ax1.set_ylabel('판례수(건)', size=20)
 
-plt.title('사건 종류별 판례수', size=20)
+plt.title('사건 종류별 판례수(2019년 10월 기준)', size=20)
 ax1.legend(loc='upper right')
 
 plt.show()
