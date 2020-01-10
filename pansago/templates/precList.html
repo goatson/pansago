@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container" style="width: 100%;">
-    
+<div>
         <h3 class="mb-30"> 판례 목록</h3>
         <div style="margin-right: 15px;">
             <form action="precList.html" method="get">
@@ -26,22 +25,24 @@
                 </div>
             </form>
         </div>
-    
-        <table class="table" style='width: 1500px ;text-align: center;'>
+        
+        <table class="table" >
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">제목</th>
-                    <th scope="col">법원</th>
-                    <th scope="col">사건유형</th>
-                    <th scope="col">판결유형</th>
-                    <th scope="col">선고일자</th>
+                    <th scope="col" style="width: 5%;">번호</th>
+                    <th scope="col" style="width: 45%; text-align: left;">제목</th>
+                    <th scope="col" style="width: 10%;">법원</th>
+                    <th scope="col" style="width: 10%;">사건유형</th>
+                    <th scope="col" style="width: 10%;">판결유형</th>
+                    <th scope="col" style="width: 10%;">선고일자</th>
                 </tr>
             </thead>
             <tbody>
-            {% for tmp in posts %}
-                <tr class="tr_mouseover">
 
-                    <td class="player_name">{{ tmp.law_title }}</td>
+            {% for tmp in posts %}
+                <tr>
+                    <td >{{ tmp.law_no }}</td>    
+                    <td style="text-align: left;">{{ tmp.law_title }}</td>
                     <td>{{ tmp.law_court_name }}</td>
                     <td>{{ tmp.law_event_type }}</td>
                     <td>{{ tmp.law_result }}</td>
@@ -100,15 +101,6 @@
                 {% endif %}
             </ul>
         </nav>
-
-        <div class="row justify-content-end">
-            <div style="margin-right: 15px;">
-                <button class="genric-btn primary radius" onclick="location.href='index'">홈으로</button>
-            </div>
-        </div>
-        <div id="pop_up" style="position:absolute; width:45%; display:none;">
-            <img id="up_img" width="100%" height="100%"/>
-        </div>
     </div>
 </div>
 {% endblock %}

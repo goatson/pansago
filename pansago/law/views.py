@@ -33,7 +33,7 @@ def preclist(request) :
         searchtype = request.GET.get('type','')
         searchkeyword = request.GET.get('text','')
 
-        if searchtype =='law_court_name':
+        if searchtype =='law_event_type':
             precList = Prec.objects.filter(law_event_type__incontains=searchkeyword).order_by('law_event_type', '-law_date')
 
         elif searchtype =='law_title':
@@ -42,15 +42,22 @@ def preclist(request) :
         if searchkeyword == '':
             precList = Prec.objects.raw('SELECT * FROM LAW_PREC ORDER BY LAW_DATE DESC')
         
-        paginator = Paginator(precList, 20)
+        paginator = Paginator(precList, 15)
         page = request.GET.get('page')
         posts = paginator.get_page(page)    #페이지에 해당되는 값만
         pageList =[]
 
         for i in range(1, paginator.num_pages + 1, 1):
             pageList.append(i)
-
-        return render(request, 'precList.html', {'precList' : precList, 'posts':posts, 'pageList':pageList, 'searchtype':searchtype, 'searchkeyword':searchkeyword})
+        # print(paginator)
+        # print(page)
+        # print(posts)
+        # print(pageList)
+        # for j in str(posts):
+        #     print(j)
+        prec_num = list(range(len(precList)+1))
+        # print(prec_num)
+        return render(request, 'precList.html', {'prec_num' : prec_num, 'precList' : precList, 'posts':posts, 'pageList':pageList, 'searchtype':searchtype, 'searchkeyword':searchkeyword})
 
         
         
