@@ -58,4 +58,4 @@ vocab = model.wv.vocab
 print(sorted(vocab, key=vocab.get, reverse=True)[:30], '\n')
 print(min(vocab, key=vocab.get))
 
-print(model.wv['하'])
+print(model.wv.most_similar('하'))
