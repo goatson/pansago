@@ -8,9 +8,9 @@
 <div>
         <h3 class="mb-30"> 판례 목록</h3>
         <div style="margin-right: 15px;">
-            <form action="precList.html" method="get">
+            <form action="/preclist" method="get">
                 <div class="form-inline row justify-content-end" style="margin-bottom: 10px">
-                    <div class="default-select" id=default-select">
+                    <div class="default-select" id="default-select">
                         <select name="type">
                             <option value="law_title">사건명</option>
                             <option value="law_event_type">법률유형</option>
@@ -41,7 +41,7 @@
 
             {% for tmp in posts %}
                 <tr>
-                    <td >{{ tmp.law_no }}</td>    
+                    <td >{{ tmp.law_no }}</td>
                     <td style="text-align: left;">{{ tmp.law_title }}</td>
                     <td>{{ tmp.law_court_name }}</td>
                     <td>{{ tmp.law_event_type }}</td>
