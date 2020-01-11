@@ -3,10 +3,7 @@ fieldset {
   position: relative;
   display: inline-block;
   padding: 0 0 0 40px;
-  background: rgb(255, 255, 255);
-  border-style: solid;
-  border-width: 0.5px;
-  border-radius: 5px;
+  background: #fff;
 }
 
 input,
