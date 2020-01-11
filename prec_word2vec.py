@@ -29,16 +29,15 @@ def preprocessing(text):
 prec = pd.read_csv('./law_list_detail.csv', encoding='utf-8')
 prec = prec.fillna('NA')
 
-p = r'.*(이혼).*'
+# p = r'.*(이혼).*'
 
-prec = prec[prec['law_title'].str.match(p) | prec['law_content'].str.match(p)]
+# prec = prec[prec['law_title'].str.match(p) | prec['law_content'].str.match(p)]
 
-sample_prec_content = prec['law_content'][97]
-sample_prec_content = preprocessing(sample_prec_content)
+sample_prec_content = prec['law_content'].apply(preprocessing)
 
 tokenizer = RegexTokenizer()
 
-token_prec_content = tokenizer.tokenize(sample_prec_content)
+token_prec_content = sample_prec_content.apply(tokenizer.tokenize)
 
 print(token_prec_content, '\n')
 
@@ -49,13 +48,10 @@ print(token_prec_content, '\n')
 
 model = word2vec.Word2Vec(token_prec_content, min_count=1)
 
-# print(model)
-
 model_name = 'prec_word2vec_model'
 model.save(model_name)
 
 vocab = model.wv.vocab
-print(sorted(vocab, key=vocab.get, reverse=True)[:30], '\n')
-print(min(vocab, key=vocab.get))
+sorted(vocab, key=vocab.get, reverse=True)
 
-print(model.wv.most_similar('하'))
+print(model.wv.most_similar('살인'))
