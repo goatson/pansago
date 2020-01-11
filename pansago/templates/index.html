@@ -9,9 +9,19 @@ PansaGo
     <div>
         <img src="/static/src/gogle.png" style="max-width: 600%;">
     </div>    
+        <!-- <input type='text'  size="55" placeholder=" Please input search keyword ">
+        &nbsp; <img src="/static/src/mangchi.png" href='/preclist'> -->
+        <!-- <input type="submit" class="genric-btn primary radius" value="검색"> -->
     <div>
-        <input type='text'  size="55" placeholder=" Please input search keyword ">
-        &nbsp; <img src="/static/src/mangchi.png">
+        <form action="/preclist" method="GET">
+            <fieldset>
+                <input type="search" name="indexsearch"/>
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+            </fieldset>
+        </form>
+
     </div>
 </div>
 {% endblock %}
