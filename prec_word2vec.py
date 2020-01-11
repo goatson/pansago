@@ -6,7 +6,7 @@ import numpy as np
 import re
 from soynlp.tokenizer import RegexTokenizer
 import logging
-from gensim.models import word2vec
+from gensim.models import word2vec, Word2Vec
 from collections import Counter
 
 # 텍스트 데이터 전처리
@@ -26,32 +26,36 @@ def preprocessing(text):
 
     return text
 
-prec = pd.read_csv('./law_list_detail.csv', encoding='utf-8')
-prec = prec.fillna('NA')
+def precSaveModel():
+    prec = pd.read_csv('./law_list_detail.csv', encoding='utf-8')
+    prec = prec.fillna('NA')
 
-# p = r'.*(이혼).*'
+    # p = r'.*(특허).*'
+    # prec = prec[prec['law_title'].str.match(p) | prec['law_content'].str.match(p)]
 
-# prec = prec[prec['law_title'].str.match(p) | prec['law_content'].str.match(p)]
+    sample_prec_content = prec['law_content'].apply(preprocessing)
 
-sample_prec_content = prec['law_content'].apply(preprocessing)
+    tokenizer = RegexTokenizer()
 
-tokenizer = RegexTokenizer()
+    token_prec_content = sample_prec_content.apply(tokenizer.tokenize)
 
-token_prec_content = sample_prec_content.apply(tokenizer.tokenize)
+    print(token_prec_content, '\n')
 
-print(token_prec_content, '\n')
+    # word2vec 모델 학습에 로그를 찍음
+    # logging.basicConfig(
+    #     format='%(asctime)s : %(levelname)s : %(message)s',
+    #     level=logging.INFO)
 
-# word2vec 모델 학습에 로그를 찍음
-# logging.basicConfig(
-#     format='%(asctime)s : %(levelname)s : %(message)s',
-#     level=logging.INFO)
+    model = word2vec.Word2Vec(token_prec_content, min_count=1, size=500, workers=1)
 
-model = word2vec.Word2Vec(token_prec_content, min_count=1)
+    # vocab = model.wv.vocab
+    # sorted(vocab, key=vocab.get, reverse=True)
 
-model_name = 'prec_word2vec_model'
-model.save(model_name)
+    model_name = 'prec_word2vec_model'
+    model.save(model_name)
 
-vocab = model.wv.vocab
-sorted(vocab, key=vocab.get, reverse=True)
+def precUsingModel(keyword):
+    model = Word2Vec.load('prec_word2vec_model')
 
-print(model.wv.most_similar('살인'))
+    # topn 파라미터로 출력개수 설정가능
+    print(model.wv.most_similar(keyword, topn=5))
