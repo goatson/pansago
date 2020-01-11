@@ -8,23 +8,7 @@ from soynlp.tokenizer import RegexTokenizer
 import logging
 from gensim.models import word2vec, Word2Vec
 from collections import Counter
-
-# 텍스트 데이터 전처리
-def preprocessing(text):
-
-    # 개행문자 제거
-    text = re.sub('\\\\n', ' ', text)
-
-    # 【피 고 인】형식 문자 제거
-    text = re.sub(r'\【[^)]*\】', '', text)
-
-    # 양 끝 공백 제거
-    text = text.strip()
-
-    # 문자 중간 공백 1개
-    text = ' '.join(text.split())
-
-    return text
+from preprocessing import preprocessing
 
 def precSaveModel():
     prec = pd.read_csv('./law_list_detail.csv', encoding='utf-8')
@@ -57,5 +41,7 @@ def precSaveModel():
 def precUsingModel(keyword):
     model = Word2Vec.load('prec_word2vec_model')
 
+    similar_words = model.wv.most_similar(keyword, topn=5)
+
     # topn 파라미터로 출력개수 설정가능
-    print(model.wv.most_similar(keyword, topn=5))
+    return similar_words
