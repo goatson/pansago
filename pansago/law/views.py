@@ -7,12 +7,7 @@ from .models import Prec
 from django.db.models import Q
 import csv
 import sqlite3
-<<<<<<< HEAD
-from .prec_word2vec import precUsingModel
-
-=======
 from prec_word2vec import precUsingModel
->>>>>>> 5097d4013305a68dee46c92825cbb423e82f0504
 
 @csrf_exempt
 def index(request) :
