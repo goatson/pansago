@@ -33,12 +33,11 @@ p = r'.*(이혼).*'
 
 prec = prec[prec['law_title'].str.match(p) | prec['law_content'].str.match(p)]
 
-sample_prec_content = prec['law_content'][97]
-sample_prec_content = preprocessing(sample_prec_content)
+sample_prec_content = prec['law_content'].apply(preprocessing)
 
 tokenizer = RegexTokenizer()
 
-token_prec_content = tokenizer.tokenize(sample_prec_content)
+token_prec_content = sample_prec_content.apply(tokenizer.tokenize)
 
 print(token_prec_content, '\n')
 
@@ -47,15 +46,10 @@ print(token_prec_content, '\n')
 #     format='%(asctime)s : %(levelname)s : %(message)s',
 #     level=logging.INFO)
 
-model = word2vec.Word2Vec(token_prec_content, min_count=1)
-
-# print(model)
+model = word2vec.Word2Vec(token_prec_content, min_count=10, size=500, workers=1)
 
 model_name = 'prec_word2vec_model'
 model.save(model_name)
 
 vocab = model.wv.vocab
-print(sorted(vocab, key=vocab.get, reverse=True)[:30], '\n')
-print(min(vocab, key=vocab.get))
-
-print(model.wv.most_similar('하'))
+print(sorted(vocab, key=vocab.get, reverse=True))
