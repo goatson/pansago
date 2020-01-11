@@ -14,8 +14,6 @@ from soynlp.noun import LRNounExtractor
 # import nltk
 # from nltk.corpus import stopwords
 
-
-
 # 텍스트 데이터 전처리
 def preprocessing(text):
 
