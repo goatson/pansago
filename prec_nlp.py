@@ -7,7 +7,7 @@ import re
 from soynlp.tokenizer import RegexTokenizer
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-from stopwords import make_stopword
+from stopwords import makeStopword
 
 # 텍스트 데이터 전처리
 def preprocessing(text):
