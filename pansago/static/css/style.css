@@ -4,7 +4,7 @@
 
 .jeonghwan {
   text-align: right;
-  margin-left: 75%;
+  margin-left: 80%;
 }
 
 .outlayer {
@@ -13,9 +13,10 @@
 }
 
 .pansago {
-  width: 80%;
+  width: 75%;
   text-align: center;
   margin-left: 10%;
+  margin-top: 5%;
 }
 
 .flex-center-start {
