@@ -4,9 +4,6 @@ fieldset {
   display: inline-block;
   padding: 0 0 0 40px;
   background: #fff;
-  border-style: solid;
-  border-width: 0.5px;
-  border-radius: 5px;
 }
 
 input,
