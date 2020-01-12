@@ -27,7 +27,7 @@ def index(request) :
         #         law_content   = line[14]
 
         #         print(law_no)
-                    
+
         #         prec = Prec(law_no=law_no, law_title=law_title, law_event_no=law_event_no, law_date=law_date, law_seongo=law_seongo, law_court_name=law_court_name, law_event_type=law_event_type, law_result=law_result, law_content=law_content)
         #         prec.save()
 
@@ -56,16 +56,5 @@ def preclist(request) :
         paginator = Paginator(precList, 10)
         page = request.GET.get('page')
         posts = paginator.get_page(page)    #페이지에 해당되는 값만
-        pageList =[]
 
-        for i in range(1, paginator.num_pages + 1, 1):
-            pageList.append(i)
-        # print(paginator)
-        # print(page)
-        # print(posts)
-        # print(pageList)
-        # for j in str(posts):
-        #     print(j)
-        prec_num = list(range(len(precList)+1))
-        # print(prec_num)
-        return render(request, 'precList.html', {'prec_num' : prec_num, 'precList' : precList, 'posts':posts, 'pageList':pageList, 'searchtype':searchtype, 'searchkeyword':searchkeyword})
+        return render(request, 'precList.html', {'precList' : precList, 'posts':posts, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch})
