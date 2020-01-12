@@ -55,7 +55,7 @@ def preclist(request) :
 
         paginator = Paginator(precList, 10)
         page = request.GET.get('page')
-        posts = paginator.get_page(page)    #페이지에 해당되는 값만
+        posts = paginator.get_page(page)    # 페이지에 해당되는 값만
 
         similar_words = []
 
