@@ -69,3 +69,7 @@ def preclist(request) :
         # print(similar_words)
 
         return render(request, 'precList.html', {'precList' : precList, 'posts':posts, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch, 'similar_words':similar_words})
+
+def showChart(request):
+    if request.method == "GET":
+        return render(request, 'chart.html')
