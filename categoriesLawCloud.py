@@ -36,7 +36,6 @@ def displayWordCloud(data=None, backgroundcolor='black', width=800, height=600):
     stopwords_kr = make_stopword()
     print('불용어 리스트 : ', stopwords_kr)
     
-   
     wordcloud = WordCloud(
                         font_path = 'C:/Windows/Fonts/malgun.ttf',
                         stopwords = stopwords_kr,
@@ -96,24 +95,3 @@ nouns = noun_extractor.extract()
 displayWordCloud(' '.join(nouns))
 
 # displayWordCloud(' '.join(law_categoriesGa1))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

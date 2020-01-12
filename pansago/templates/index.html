@@ -5,6 +5,9 @@ PansaGo
 {% endblock %}
 
 {% block content %}
+<div class="loading">
+    <strong>Loading.......</strong>
+</div>
 <div class="outlayer">
     <div>
         <img src="/static/src/gogle.png" style="max-width: 600%;">
@@ -15,13 +18,24 @@ PansaGo
     <div>
         <form action="/preclist" method="GET">
             <fieldset>
-                <input type="search" placeholder="Please input keyword" style="text-align: center;" name="indexsearch"/>
+                <input type="search" placeholder="Please input keyword"  name="indexsearch"/>
                     <button type="submit">
                         <i class="fa fa-search"></i>
                     </button>
             </fieldset>
         </form>
-
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.loading').show();
+    });
+
+    $(window).on('load', function() {
+        $('.loading').hide();
+    });
+</script>
 {% endblock %}
