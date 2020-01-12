@@ -51,7 +51,7 @@
         {% for tmp in posts %}
             <tr>
                 <td >{{ tmp.law_no }}</td>
-                <td style="text-align: left;">{{ tmp.law_title }}</td>
+                <td style="text-align: left;"><a href="/precDetail?no={{ tmp.law_no }}">{{ tmp.law_title }}</a></td>
                 <td>{{ tmp.law_court_name }}</td>
                 <td>{{ tmp.law_event_type }}</td>
                 <td>{{ tmp.law_result }}</td>

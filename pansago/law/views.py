@@ -73,3 +73,15 @@ def preclist(request) :
 def showChart(request):
     if request.method == "GET":
         return render(request, 'chart.html')
+
+
+def precDetail(request):
+    if request.method == "GET":
+        no = request.GET.get('no','')  # no=209151
+        print(no)
+        if no != '':
+            precDetail = Prec.objects.get(law_no = no)
+            print(type(precDetail))
+
+        # return render_template('boardc.html', key=one, prev=prev, next=next)
+        return render(request, 'precDetail.html', {'precDetail' : precDetail})
