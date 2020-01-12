@@ -57,19 +57,6 @@ def preclist(request) :
         page = request.GET.get('page')
         posts = paginator.get_page(page)    #페이지에 해당되는 값만
 
-<<<<<<< HEAD
-        for i in range(1, paginator.num_pages + 1, 1):
-            pageList.append(i)
-        # print(paginator)
-        # print(page)
-        # print(posts)
-        # print(pageList)
-        # for j in str(posts):
-        #     print(j)
-        prec_num = list(range(len(precList)+1))
-        # print(prec_num)
-        return render(request, 'precList.html', {'prec_num' : prec_num, 'precList' : precList, 'posts':posts, 'pageList':pageList, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch})
-=======
         similar_words = []
 
         if indexsearch != '':
@@ -86,4 +73,3 @@ def preclist(request) :
 def showChart(request):
     if request.method == "GET":
         return render(request, 'chart.html')
->>>>>>> 7b16cb450c50ce9bd37d4617ae586384fecc1fd9
