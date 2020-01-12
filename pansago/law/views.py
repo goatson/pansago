@@ -71,6 +71,17 @@ def preclist(request) :
         return render(request, 'precList.html', {'prec_num' : prec_num, 'precList' : precList, 'posts':posts, 'pageList':pageList, 'searchtype':searchtype, 'searchkeyword':searchkeyword})
 
 
+@csrf_exempt
+def dictionaryhome(request) :
+    if request.method == "GET" :
+   
+        return render(request, 'dictionaryhome.html')
 
 
-        dictionarylist_
+
+@csrf_exempt
+def showwc(request) :
+    if request.method == "GET" :
+        event_type = request.GET.get('event_type','')
+
+        return render(request, 'showwc.html', {'event_type':event_type})
