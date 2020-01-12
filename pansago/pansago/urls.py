@@ -25,5 +25,5 @@ urlpatterns = [
     path('showChart/', law.views.showChart, name='showChart'),
     path('precDetail/', law.views.precDetail, name='precDetail'),
     path('showChart/', law.views.showChart, name='showChart'),
-    path('precDetail/', law.views.precDetail, name='precDetail')
+    path('showwc/', law.views.showwc, name='showwc')
 ]
