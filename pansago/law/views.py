@@ -68,4 +68,4 @@ def preclist(request) :
         #     print(j)
         prec_num = list(range(len(precList)+1))
         # print(prec_num)
-        return render(request, 'precList.html', {'prec_num' : prec_num, 'precList' : precList, 'posts':posts, 'pageList':pageList, 'searchtype':searchtype, 'searchkeyword':searchkeyword})
+        return render(request, 'precList.html', {'prec_num' : prec_num, 'precList' : precList, 'posts':posts, 'pageList':pageList, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch})
