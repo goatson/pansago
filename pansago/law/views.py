@@ -57,4 +57,15 @@ def preclist(request) :
         page = request.GET.get('page')
         posts = paginator.get_page(page)    #페이지에 해당되는 값만
 
-        return render(request, 'precList.html', {'precList' : precList, 'posts':posts, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch})
+        similar_words = []
+
+        if indexsearch != '':
+            result = precUsingModel(indexsearch)
+            # print(result)
+
+            for tmp in result:
+                similar_words.append(tmp[0])
+
+        # print(similar_words)
+
+        return render(request, 'precList.html', {'precList' : precList, 'posts':posts, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch, 'similar_words':similar_words})

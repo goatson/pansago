@@ -57,7 +57,7 @@ def precSaveModel():
 def precUsingModel(keyword):
     model = Word2Vec.load('prec_word2vec_model')
 
+    # topn 파라미터로 출력개수 설정가능
     similar_words = model.wv.most_similar(keyword, topn=5)
 
-    # topn 파라미터로 출력개수 설정가능
     return similar_words
