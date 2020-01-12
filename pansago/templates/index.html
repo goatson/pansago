@@ -5,6 +5,9 @@ PansaGo
 {% endblock %}
 
 {% block content %}
+<div class="loading">
+    <strong>Loading.......</strong>
+</div>
 <div class="outlayer">
     <div>
         <img src="/static/src/gogle.png" style="max-width: 600%;">
@@ -21,7 +24,18 @@ PansaGo
                     </button>
             </fieldset>
         </form>
-
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.loading').show();
+    });
+
+    $(window).on('load', function() {
+        $('.loading').hide();
+    });
+</script>
 {% endblock %}
