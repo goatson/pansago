@@ -1,84 +1,84 @@
 #law_title
 #잘 익숙하지 않은 단어를 법률용어대사전으로 링크 연결시켜 단어 정의 보여주기
 #view 겸용
-import pandas as pd
-import warnings
-warnings.filterwarnings('ignore')
+# import pandas as pd
+# import warnings
+# warnings.filterwarnings('ignore')
 
-import numpy as np
-import re
+# import numpy as np
+# import re
 # from soynlp.tokenizer import RegexTokenizer
 # import logging
 # from gensim.models import word2vec
 
-from collections import Counter
-from sklearn.manifold import TSNE
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import gensim
-import gensim.models as g
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.shortcuts import redirect
-from django.views.decorators.csrf import csrf_exempt
-from django.db import connection
+# from collections import Counter
+# from sklearn.manifold import TSNE
+# import matplotlib as mpl
+# import matplotlib.pyplot as plt
+# import gensim
+# import gensim.models as g
+# from django.shortcuts import render
+# from django.http import HttpResponse
+# from django.shortcuts import redirect
+# from django.views.decorators.csrf import csrf_exempt
+# from django.db import connection
 
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+# from django.contrib.auth.models import User
+# from django.contrib.auth import authenticate, login, logout
 
-from django.db import connection
+# from django.db import connection
 
 
 #main > views > 사전 링크 걸기
-@csrf_exempt
-def dictionary(request) :
-    if request.method == "GET" :
-        return render(request, 'shop/auth_login.html')
-    elif request.method == "POST" :
-        id = request.POST['username']
-        pw = request.POST['password']
+# @csrf_exempt
+# def dictionary(request) :
+#     if request.method == "GET" :
+#         return render(request, 'shop/auth_login.html')
+#     elif request.method == "POST" :
+#         id = request.POST['username']
+#         pw = request.POST['password']
 
-        user = authenticate(request, username=id, password=pw)
-        if user is not None:
-            login(request, user) #로그인 처리
-            return redirect("/shop/auth_index")
-        else:
-            return redirect("/shop/auth_login")
+#         user = authenticate(request, username=id, password=pw)
+#         if user is not None:
+#             login(request, user) #로그인 처리
+#             return redirect("/shop/auth_index")
+#         else:
+#             return redirect("/shop/auth_login")
 
 #127.0.0.1:8000/board/index
 
-def index(request):
+# def index(request):
     # return HttpResponse("index page")
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM board")
-    row = cursor.fetchall()
-    print(row)
+#     cursor = connection.cursor()
+#     cursor.execute("SELECT * FROM board")
+#     row = cursor.fetchall()
+#     print(row)
 
-    return render(request, 'board/index.html')
+#     return render(request, 'board/index.html')
 
-@csrf_exempt
-def dictionary2(request):
-    if request.method == "GET":
-        return render(request, 'board/boardwrite.html')
-    elif request.method == "POST":
-        ti = request.POST['ti']
-        co = request.POST['co']
-        img = request.POST['img']
-        wr =request.POST['wr']
+# @csrf_exempt
+# def dictionary2(request):
+#     if request.method == "GET":
+#         return render(request, 'board/boardwrite.html')
+#     elif request.method == "POST":
+#         ti = request.POST['ti']
+#         co = request.POST['co']
+#         img = request.POST['img']
+#         wr =request.POST['wr']
 
-        a1 = [ti, co, img.read(), wr]
-        #print(a1)
+#         a1 = [ti, co, img.read(), wr]
+#         #print(a1)
 
-        cursor = connection.cursor()
-        sql =  """
-            INSERT INTO BOARD
-            (BRD_NO, BRD_TITLE, BRD_CONTENT, BRD_IMG, BRD_WRITER, BRD_HIT, BRD_DATE) 
-             VALUES(SEQ_BOARD_NO.NEXTVAL, %s, %s, %s, %s, 1, SYSDATE)   
-             """
-        cursor.execute(sql, a1)
-        #connection.commit()
+#         cursor = connection.cursor()
+#         sql =  """
+#             INSERT INTO BOARD
+#             (BRD_NO, BRD_TITLE, BRD_CONTENT, BRD_IMG, BRD_WRITER, BRD_HIT, BRD_DATE) 
+#              VALUES(SEQ_BOARD_NO.NEXTVAL, %s, %s, %s, %s, 1, SYSDATE)   
+#              """
+#         cursor.execute(sql, a1)
+#         #connection.commit()
 
-        return redirect("/board/index")
+#         return redirect("/board/index")
 
 
 # def boardlist(request):

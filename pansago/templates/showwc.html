@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+PansaGo
+{% endblock %}
+
+{% block content %}
+    {% if event_type == '민사' %}
+        <div>
+            <img src="/static/src/민사.png" style="max-width: 600%;">
+        </div>
+    {% elif event_type == '형사' %}
+        <div>
+            <img src="/static/src/형사.png" style="max-width: 600%;">
+        </div>
+    {% elif event_type == '가사' %}
+        <div>
+            <img src="/static/src/가사.png" style="max-width: 600%;">
+        </div>
+    {% elif event_type == '일반행정' %}
+        <div>
+            <img src="/static/src/일반행정.png" style="max-width: 600%;">
+        </div>
+    {% elif event_type == '특허' %}
+        <div>
+            <img src="/static/src/특허.png" style="max-width: 600%;">
+        </div>
+    {% elif event_type == '세무' %}
+        <div>
+            <img src="/static/src/세무.png" style="max-width: 600%;">
+        </div>   
+    {% endif %}      
+{% endblock %}

@@ -32,8 +32,7 @@ def index(request) :
         #         prec = Prec(law_no=law_no, law_title=law_title, law_event_no=law_event_no, law_date=law_date, law_seongo=law_seongo, law_court_name=law_court_name, law_event_type=law_event_type, law_result=law_result, law_content=law_content)
         #         prec.save()
 
-        return render(request, 'index.html')  ## templates 밑에 바로 읽음
-    
+        return render(request, 'index.html')  ## templates 밑에 바로 읽음  
 
 def preclist(request) :
     if request.method == "GET":
@@ -66,7 +65,6 @@ def showChart(request):
     if request.method == "GET":
         return render(request, 'chart.html')
 
-
 def precDetail(request):
     if request.method == "GET":
         no = request.GET.get('no','')  # no=209151
@@ -88,3 +86,16 @@ def precDetail(request):
 
         # return render_template('boardc.html', key=one, prev=prev, next=next)
         return render(request, 'precDetail.html', {'precDetail' : precDetail, 'indexsearch' : indexsearch, 'similar_words' : similar_words})
+
+@csrf_exempt
+def dictionaryhome(request) :
+    if request.method == "GET" :
+   
+        return render(request, 'dictionaryhome.html')
+
+@csrf_exempt
+def showwc(request) :
+    if request.method == "GET" :
+        event_type = request.GET.get('event_type','')
+
+        return render(request, 'showwc.html', {'event_type':event_type})

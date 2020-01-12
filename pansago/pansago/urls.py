@@ -23,5 +23,7 @@ urlpatterns = [
     path('', law.views.index, name='index'),
     path('preclist/', law.views.preclist, name='preclist'),
     path('showChart/', law.views.showChart, name='showChart'),
+    path('precDetail/', law.views.precDetail, name='precDetail'),
+    path('showChart/', law.views.showChart, name='showChart'),
     path('precDetail/', law.views.precDetail, name='precDetail')
 ]

@@ -11,6 +11,7 @@ from stopwords import make_stopword
 
 import soynlp
 from soynlp.noun import LRNounExtractor
+
 # import nltk
 # from nltk.corpus import stopwords
 
@@ -31,7 +32,7 @@ def preprocessing(text):
 
     return text
 
-def displayWordCloud(data=None, backgroundcolor='white', width=800, height=600):
+def displayWordCloud(data=None, backgroundcolor='black', width=800, height=600):
     stopwords_kr = make_stopword()
     print('불용어 리스트 : ', stopwords_kr)
     
@@ -53,15 +54,15 @@ prec = pd.read_csv('law_list_detail.csv', encoding='utf-8')
 # print(contents)
 
 
-# law_contents_type = prec['law_event_type'].astype('str').apply(preprocessing)
-# print(law_contents_type)
+
+
 
 # law_categoriesGa = prec[prec['law_event_type'] == "가사"] 
 # law_categoriesGa1 = law_categoriesGa['law_content'].astype('str').apply(preprocessing)
 # print(law_categoriesGa1.head())
 
-# law_categoriesMin = prec[prec['law_event_type'] == "민사"]
-# law_categoriesMin1 = law_categoriesMin['law_content'].astype('str').apply(preprocessing)
+law_categoriesMin = prec[prec['law_event_type'] == "민사"]
+law_categoriesMin1 = law_categoriesMin['law_content'].astype('str').apply(preprocessing)
 # print(law_categoriesMin1.head())
 # displayWordCloud(' '.join(law_categoriesMin1))
 
@@ -81,12 +82,12 @@ prec = pd.read_csv('law_list_detail.csv', encoding='utf-8')
 # displayWordCloud(' '.join(law_categoriesT1))
 
 
-law_categoriesP = prec[prec['law_event_type'] == "형사"]
-law_categoriesP1 = law_categoriesP['law_content'].astype('str').apply(preprocessing)
+# law_categoriesP = prec[prec['law_event_type'] == "형사"]
+# law_categoriesP1 = law_categoriesP['law_content'].astype('str').apply(preprocessing)
 # displayWordCloud(' '.join(law_categoriesP1))
 
 noun_extractor = LRNounExtractor(verbose=True)
-noun_extractor.train(law_categoriesP1)
+noun_extractor.train(law_categoriesMin1)
 # 명사만 추출
 nouns = noun_extractor.extract()
 # print(type(nouns))
