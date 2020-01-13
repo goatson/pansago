@@ -34,6 +34,11 @@
 }
 /* 페이지 로딩 */
 
+.my_img {
+  width: 1000px;
+  height: 600px;
+}
+
 .jeonghwan {
   text-align: right;
   margin-left: 70%;

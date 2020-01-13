@@ -4,30 +4,29 @@
 PansaGo
 {% endblock %}
 
+
+
 {% block content %}
-    {% if event_type == '민사' %}
-        <div>
-            <img src="/static/src/민사.png" style="max-width: 600%;">
+    <div style="margin-top: 200px;">
+        <!-- <H3 align="center" style="margin-top: 200px; margin-right: 1400px;"> {{event_type}} 워드클라우드 </H3> -->
+        <div style="margin-left: 170px;">
+            <H3> {{event_type}} 워드클라우드 </H3>
         </div>
-    {% elif event_type == '형사' %}
-        <div>
-            <img src="/static/src/형사.png" style="max-width: 600%;">
+        <div style="margin-top: -10px;">
+            {% if event_type == '민사' %}
+                <img src="/static/src/민사.png" class="my_img"> 
+            {% elif event_type == '형사' %}
+                <img src="/static/src/형사.png" class="my_img">
+            {% elif event_type == '가사' %}
+                <img src="/static/src/가사.png" class="my_img">
+            {% elif event_type == '일반행정' %}
+                <img src="/static/src/일반행정.png" class="my_img">
+            {% elif event_type == '특허' %}
+                <img src="/static/src/특허.png" class="my_img">
+            {% elif event_type == '세무' %}
+                <img src="/static/src/세무.png" class="my_img">
+            {% endif %}
         </div>
-    {% elif event_type == '가사' %}
-        <div>
-            <img src="/static/src/가사.png" style="max-width: 600%;">
-        </div>
-    {% elif event_type == '일반행정' %}
-        <div>
-            <img src="/static/src/일반행정.png" style="max-width: 600%;">
-        </div>
-    {% elif event_type == '특허' %}
-        <div>
-            <img src="/static/src/특허.png" style="max-width: 600%;">
-        </div>
-    {% elif event_type == '세무' %}
-        <div>
-            <img src="/static/src/세무.png" style="max-width: 600%;">
-        </div>   
-    {% endif %}      
+    </div>
+    
 {% endblock %}
