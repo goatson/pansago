@@ -1,7 +1,7 @@
 def make_stopword():
     stopwords_kr = []
 
-    with open('./stopwords_keyword.txt', 'r', encoding='utf-8') as f:
+    with open('./stopwords_ko.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
         
         for line in lines:
