@@ -1,33 +1,50 @@
+<!-- CSS here -->
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/static/css/magnific-popup.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/themify-icons.css">
+<link rel="stylesheet" href="/static/css/nice-select.css">
+<link rel="stylesheet" href="/static/css/flaticon.css">
+<link rel="stylesheet" href="/static/css/gijgo.css">
+<link rel="stylesheet" href="/static/css/animate.css">
+<link rel="stylesheet" href="/static/css/slick.css">
+<link rel="stylesheet" href="/static/css/slicknav.css">
+<link rel="stylesheet" href="/static/css/mystyle.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<!-- <link rel="stylesheet" href="css/responsive.css"> -->
+<link rel="stylesheet" href="/static/css/fakeLoader.css">
+
 {% extends "base.html" %}
 
 {% block title %}
 PansaGo
 {% endblock %}
 
+
+
 {% block content %}
-    {% if event_type == '민사' %}
-        <div>
-            <img src="/static/src/민사.png" style="max-width: 600%;">
+    <div style="margin-top: 200px;">
+        <!-- <H3 align="center" style="margin-top: 200px; margin-right: 1400px;"> {{event_type}} 워드클라우드 </H3> -->
+        <div style="margin-left: 170px;">
+            <H3> {{event_type}} 워드클라우드 </H3>
         </div>
-    {% elif event_type == '형사' %}
-        <div>
-            <img src="/static/src/형사.png" style="max-width: 600%;">
+        <div style="margin-top: -10px;">
+            {% if event_type == '민사' %}
+                <img src="/static/src/민사.png" class="my_img"> 
+            {% elif event_type == '형사' %}
+                <img src="/static/src/형사.png" class="my_img">
+            {% elif event_type == '가사' %}
+                <img src="/static/src/가사.png" class="my_img">
+            {% elif event_type == '일반행정' %}
+                <img src="/static/src/일반행정.png" class="my_img">
+            {% elif event_type == '특허' %}
+                <img src="/static/src/특허.png" class="my_img">
+            {% elif event_type == '세무' %}
+                <img src="/static/src/세무.png" class="my_img">
+            {% endif %}
         </div>
-    {% elif event_type == '가사' %}
-        <div>
-            <img src="/static/src/가사.png" style="max-width: 600%;">
-        </div>
-    {% elif event_type == '일반행정' %}
-        <div>
-            <img src="/static/src/일반행정.png" style="max-width: 600%;">
-        </div>
-    {% elif event_type == '특허' %}
-        <div>
-            <img src="/static/src/특허.png" style="max-width: 600%;">
-        </div>
-    {% elif event_type == '세무' %}
-        <div>
-            <img src="/static/src/세무.png" style="max-width: 600%;">
-        </div>   
-    {% endif %}      
+    </div>
+    
 {% endblock %}

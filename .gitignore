@@ -14,3 +14,4 @@ law_list.csv
 prec_word2vec_model
 prec_word2vec_model.trainables.syn1neg.npy
 prec_word2vec_model.wv.vectors.npy
+law_list_detail_2.csv

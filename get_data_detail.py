@@ -22,7 +22,7 @@ with open('law_list.csv', 'r', encoding='utf-8') as f:
 
     # print(law_no_list)
 
-with open('law_list_detail.csv', 'w', newline='', encoding='utf-8') as f:
+with open('law_list_detail_2.csv', 'w', newline='', encoding='utf-8') as f:
     fieldnames = ['law_no', 'law_title', 'law_event_no', 'law_date', 'law_seongo', 'law_court_name', 'law_court_code', 'law_event_type', 'law_event_code', 'law_result', 'law_judge', 'law_judge_summary', 'law_ref', 'law_ref_precedent', 'law_content']
     writer = csv.DictWriter(f, fieldnames=fieldnames)
     writer.writeheader()
@@ -63,6 +63,9 @@ with open('law_list_detail.csv', 'w', newline='', encoding='utf-8') as f:
         law_judge_summary = substringTags(law_judge_summary)
         law_ref = substringTags(law_ref)
         law_ref_precedent = substringTags(law_ref_precedent)
-        law_content = substringTags(law_content)
+        # law_content = substringTags(law_content)
 
         writer.writerow({'law_no' : law_no, 'law_title': law_title, 'law_event_no': law_event_no, 'law_date': law_date, 'law_seongo': law_seongo, 'law_court_name': law_court_name, 'law_court_code': law_court_code, 'law_event_type': law_event_type, 'law_event_code': law_event_code, 'law_result': law_result, 'law_judge': law_judge, 'law_judge_summary': law_judge_summary, 'law_ref': law_ref, 'law_ref_precedent': law_ref_precedent, 'law_content': law_content})
+        
+
+
