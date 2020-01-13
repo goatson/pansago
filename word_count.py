@@ -47,12 +47,13 @@ def tag_counting(law_event_type):
     nouns = noun_extractor.extract()
 
     count = Counter(nouns)
-    print(count)
+    # print(count)
 
     tag_count = []
-    stopwords = ['것으로', '이하', '또는', '있다', '소외', '없다', '관한', '같은', '소외', '대한', '피고', '원고', '사건', '아니', '사실', '같이', '경우', '이유', '사건본인', '주장', '판결', '대하여', '관하여']
+    stopwords = make_stopword()
+    # print(stopwords)
 
-    for n, c in count.most_common(100):
+    for n, c in count.most_common(200):
         if n not in stopwords:
             dics = {'tag': n, 'count': c[0]}
             tag_count.append(dics)
@@ -60,13 +61,33 @@ def tag_counting(law_event_type):
         if len(tag_count) == 20:
             break
 
+    # print(tag_count)
+
     for tag in tag_count:
         print("{:<14}".format(tag['tag']), end='\t')
         print("{}".format(tag['count']))
 
-tag_counting('가사')
-# tag_counting('민사')
-# tag_counting('세무')
-# tag_counting('일반행정')
-# tag_counting('특허')
-# tag_counting('형사')
+    df = pd.DataFrame.from_dict(tag_count, orient='columns')
+    df.set_index(df['tag'], inplace=True)
+    # print(df)
+
+    # 스타일 서식 지정
+    plt.style.use('ggplot')
+
+    ax1 = df.plot(kind='bar', figsize=(20, 10), width=0.7, stacked=False, legend=None)
+
+    ax1.set_ylim(0, 60000)
+    ax1.set_xlabel('단어', size=20)
+    ax1.set_ylabel('빈도수', size=20)
+
+    plt.title('사건 종류별 특정 단어 빈도수(형사)', size=20)
+
+    plt.show()
+
+# 실행
+# tag_counting('가사')      # limit -> 2000
+# tag_counting('민사')      # limit -> 60000
+# tag_counting('세무')      # limit -> 20000
+# tag_counting('일반행정')  # limit -> 35000
+# tag_counting('특허')      # limit -> 14000
+tag_counting('형사')      # limit -> 60000

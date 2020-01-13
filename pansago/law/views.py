@@ -7,8 +7,11 @@ from django.db import connection
 from .models import Prec
 from django.db.models import Q
 import csv
+import json
 import sqlite3
 from prec_word2vec import precUsingModel
+from graph_event_type import draw_graph
+from django.http import HttpResponse
 
 @csrf_exempt
 def index(request) :
@@ -64,7 +67,26 @@ def preclist(request) :
 
 def showChart(request):
     if request.method == "GET":
-        return render(request, 'chart.html')
+        graphType = request.GET.get('graphType','')
+
+        return render(request, 'chart.html', {'graphType': graphType})
+
+@csrf_exempt
+def chartSearch(request):
+    if request.method == 'GET':
+        return render(request, 'chart_search.html')
+
+    elif request.method == 'POST':
+        search_keyword = request.POST.get('search_keyword','')
+        # print(search_keyword)
+
+        if search_keyword != '':
+            graph = draw_graph(search_keyword)
+            # print(graph)
+
+        context = {'graph': graph}
+
+        return HttpResponse(json.dumps(context), content_type='application/json')
 
 def precDetail(request):
     if request.method == "GET":
@@ -76,8 +98,6 @@ def precDetail(request):
             precDetail = Prec.objects.get(law_no = no)
             # precDetail = get_object_or_404(Prec, law_no = no)
             # print(type(precDetail))
-        law_content = precDetail.law_content
-        print(law_content)
 
         similar_words = []
         if indexsearch != '':
@@ -86,12 +106,12 @@ def precDetail(request):
             for tmp in result:
                 similar_words.append(tmp[0])
 
-        return render(request, 'precDetail.html', {'law_content':law_content, 'precDetail' : precDetail, 'indexsearch' : indexsearch, 'similar_words' : similar_words})
+        return render(request, 'precDetail.html', {'precDetail' : precDetail, 'indexsearch' : indexsearch, 'similar_words' : similar_words})
 
 @csrf_exempt
 def dictionaryhome(request) :
     if request.method == "GET" :
-   
+
         return render(request, 'dictionaryhome.html')
 
 @csrf_exempt

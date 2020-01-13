@@ -27,7 +27,11 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li><a  href="/index">home</a></li>
-                                                <li><a href="/showChart">Chart </a></li>                                                
+                                                <li><a href="#">Chart <i class="ti-angle-down"></i></a>
+                                                    <ul class="submenu">
+                                                        <li><a href="/showChart">사건 유형별</a></li>
+                                                        <li><a href="/chartSearch">검색</a></li>
+                                                    </ul>                                            
                                                 <li><a href="#">WordCloud <i class="ti-angle-down"></i></a>
                                                     <ul class="submenu">
                                                         <li><a href="/showwc?event_type=민사">민사</a></li>
@@ -79,7 +83,6 @@
         <script src="/static/js/jquery.validate.min.js"></script>
         <script src="/static/js/mail-script.js"></script>
         <script src="/static/js/main.js"></script>
-        <script src="/static/js/fakeLoader.js"></script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
         
         {% block script %}{% endblock %}
