@@ -21,6 +21,12 @@ Chart
 {% endblock %}
 
 {% block content %}
+<div class="wrap-loading display-none">
+    <div class="loading-container">
+        <div class="loading"></div>
+        <div id="loading-text">loading</div>
+    </div>
+</div>
 <div>
     <div style="margin-left: 200px;">
         <input type='text' id='search_keyword' placeholder="please input search keyword">
@@ -49,6 +55,12 @@ Chart
                     // alert('ajax 통신성공');
                     // alert(json.graph)
                     $('#myimg').attr('src', json.graph)
+                },
+                beforeSend:function(){
+                    $('.wrap-loading').removeClass('display-none')
+                },
+                complete:function(){
+                    $('.wrap-loading').addClass('display-none');
                 },
                 error: function(request, error) {
                     alert('전송 실패...')
