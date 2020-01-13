@@ -26,5 +26,6 @@ urlpatterns = [
     path('precDetail/', law.views.precDetail, name='precDetail'),
     path('showChart/', law.views.showChart, name='showChart'),
     path('showwc/', law.views.showwc, name='showwc'),
-    path('dictionaryhome/', law.views.dictionaryhome, name='dictionaryhome')
+    path('dictionaryhome/', law.views.dictionaryhome, name='dictionaryhome'),
+    path('chartSearch/', law.views.chartSearch, name='chartSearch'),
 ]

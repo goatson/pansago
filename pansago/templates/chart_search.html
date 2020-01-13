@@ -1,0 +1,60 @@
+<!-- CSS here -->
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/static/css/magnific-popup.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/themify-icons.css">
+<link rel="stylesheet" href="/static/css/nice-select.css">
+<link rel="stylesheet" href="/static/css/flaticon.css">
+<link rel="stylesheet" href="/static/css/gijgo.css">
+<link rel="stylesheet" href="/static/css/animate.css">
+<link rel="stylesheet" href="/static/css/slick.css">
+<link rel="stylesheet" href="/static/css/slicknav.css">
+<link rel="stylesheet" href="/static/css/mystyle.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<!-- <link rel="stylesheet" href="css/responsive.css"> -->
+{% extends "base.html" %}
+
+{% block title %}
+Chart
+{% endblock %}
+
+{% block content %}
+<div>
+    <div style="margin-left: 200px;">
+        <input type='text' id='search_keyword' placeholder="please input search keyword">
+        <input type="button" class="genric-btn primary radius" id="search_btn" value='검색'>
+    </div>
+    <div>
+        <img src="{{graph}}" id="myimg" style="max-width: 600%;">
+    </div>    
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(function() {
+        $('#search_btn').click(function() {
+            // alert('ajax 전송시작');
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'chartSearch' %}",
+                data: {
+                    'search_keyword': $('#search_keyword').val(),
+                    // 'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                dataType: 'json',
+                success: function(json) {
+                    // alert('ajax 통신성공');
+                    // alert(json.graph)
+                    $('#myimg').attr('src', json.graph)
+                },
+                error: function(request, error) {
+                    alert('전송 실패...')
+                }
+            })
+        })
+    })
+</script>
+{% endblock %}
