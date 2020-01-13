@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from django.db import connection
@@ -56,18 +57,9 @@ def preclist(request) :
         page = request.GET.get('page')
         posts = paginator.get_page(page)    # 페이지에 해당되는 값만
 
-        similar_words = []
+        
 
-        if indexsearch != '':
-            result = precUsingModel(indexsearch)
-            # print(result)
-
-            for tmp in result:
-                similar_words.append(tmp[0])
-
-        # print(similar_words)
-
-        return render(request, 'precList.html', {'precList' : precList, 'posts':posts, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch, 'similar_words':similar_words})
+        return render(request, 'precList.html', {'precList' : precList, 'posts':posts, 'searchtype':searchtype, 'searchkeyword':searchkeyword, 'indexsearch':indexsearch})
 
 def showChart(request):
     if request.method == "GET":
@@ -77,12 +69,23 @@ def precDetail(request):
     if request.method == "GET":
         no = request.GET.get('no','')  # no=209151
         print(no)
+        indexsearch = request.GET.get('indexsearch','')
+
         if no != '':
             precDetail = Prec.objects.get(law_no = no)
-            print(type(precDetail))
+            # precDetail = get_object_or_404(Prec, law_no = no)
+            # print(type(precDetail))
+        
+
+        similar_words = []
+        if indexsearch != '':
+            result = precUsingModel(indexsearch)
+            # print(result)
+            for tmp in result:
+                similar_words.append(tmp[0])
 
         # return render_template('boardc.html', key=one, prev=prev, next=next)
-        return render(request, 'precDetail.html', {'precDetail' : precDetail})
+        return render(request, 'precDetail.html', {'precDetail' : precDetail, 'indexsearch' : indexsearch, 'similar_words' : similar_words})
 
 @csrf_exempt
 def dictionaryhome(request) :

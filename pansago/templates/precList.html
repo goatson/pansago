@@ -1,3 +1,21 @@
+<!-- CSS here -->
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/static/css/magnific-popup.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/themify-icons.css">
+<link rel="stylesheet" href="/static/css/nice-select.css">
+<link rel="stylesheet" href="/static/css/flaticon.css">
+<link rel="stylesheet" href="/static/css/gijgo.css">
+<link rel="stylesheet" href="/static/css/animate.css">
+<link rel="stylesheet" href="/static/css/slick.css">
+<link rel="stylesheet" href="/static/css/slicknav.css">
+<link rel="stylesheet" href="/static/css/mystyle.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<!-- <link rel="stylesheet" href="css/responsive.css"> -->
+<link rel="stylesheet" href="/static/css/fakeLoader.css">
+
 {% extends "base.html"%}
 
 {% block title %}
@@ -10,14 +28,7 @@
 </div>
 <div class="pansago">
     <!-- <div style="margin-left: 200px;"> -->
-    <div style="text-align: left;">
-        <h3>연관 검색어</h3><br>
-        <h4>
-            {% for tmp in similar_words %}
-                <a href="/preclist?page=1&type={{searchtype}}&text={{searchkeyword}}&indexsearch={{tmp}}"># {{tmp}}</a>&nbsp;&nbsp;
-            {% endfor %}
-        </h4>
-    </div>
+    
     <h3 class="mb-30"> </h3>
     <div style="margin-right: 15px;">
         <form action="/preclist" method="get">
@@ -54,7 +65,8 @@
         {% for tmp in posts %}
             <tr>
                 <td >{{ tmp.law_no }}</td>
-                <td style="text-align: left;"><a href="/precDetail?no={{ tmp.law_no }}">{{ tmp.law_title }}</a></td>
+                <td style="text-align: left;"><a href="/precDetail/?no={{ tmp.law_no }}&indexsearch={{ indexsearch }}">{{ tmp.law_title }}</a></td>
+                
                 <td>{{ tmp.law_court_name }}</td>
                 <td>{{ tmp.law_event_type }}</td>
                 <td>{{ tmp.law_result }}</td>
