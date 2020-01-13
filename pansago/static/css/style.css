@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700&display=swap");
 /* line 1, ../../Arafath/CL/Cl November/223. Transportation/HTML/scss/_extend.scss */
 
+.genric-btn {
+  width: 100px;
+}
+
 /* 페이지 로딩 */
 .wrap-loading{
   position: fixed;
@@ -148,7 +152,8 @@
   top: 0;
   width: 100px;
 }
-/* 페이지 로딩 */
+/* 페이지 로딩 끝 */
+
 
 .my_img {
   max-width: 200%;
