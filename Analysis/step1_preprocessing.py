@@ -3,12 +3,13 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from soynlp.tokenizer import RegexTokenizer
 from wordcloud import WordCloud
+from soynlp.tokenizer import RegexTokenizer
 from stopwords import make_stopword
 from soynlp.noun import LRNounExtractor
 from konlpy.tag import *
 from collections import Counter
 import re
-from stopwords import make_stopword
+from stopwords_keyword import make_stopword
 
 def preprocessing(text):
 
@@ -48,11 +49,24 @@ for tmp in prec['law_content']:
 
 
 prec['law_jumoon'] = law_jumoon
-print(prec['law_jumoon'].iloc[0])
+
+prec['law_title'].fillna('1', inplace=True)
+keyword = input("사건명을 입력하세요 : ")
+prec_keyword = prec[prec['law_title'].str.contains(keyword)]['law_jumoon']
+print(prec_keyword)
+stopwords_keyword = make_stopword()
 noun_extractor = LRNounExtractor(verbose=True)
-noun_extractor.train(preprocessing(prec['law_jumoon'].iloc[0]))
+noun_extractor.train(prec_keyword.astype('str').apply(preprocessing))
 nouns = noun_extractor.extract()
-# print(type(nouns))
+count = Counter(nouns)
+word_list = []
+for n, c in count.most_common(1000) :
+        if n not in stopwords_keyword :
+            dics = {'tag': n, 'count': c[0]}
+            word_list.append(dics)
+            print(dics)
 
-print(nouns)
-
+# for k in prec_keyword :
+#     if k not in stopwords_keyword :
+#         word_list.append(k)
+# print(word_list)        
