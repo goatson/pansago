@@ -5,6 +5,7 @@ from soynlp.tokenizer import RegexTokenizer
 from wordcloud import WordCloud
 from stopwords import make_stopword
 from soynlp.noun import LRNounExtractor
+from konlpy.tag import *
 from collections import Counter
 import re
 from stopwords import make_stopword

@@ -15,4 +15,3 @@ class Prec(models.Model):
     
     def __str__(self):
         return (self.law_index) #문자만 가능
-
