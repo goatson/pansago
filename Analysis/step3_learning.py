@@ -26,7 +26,7 @@ def step3_learning():
     y_test = test_df['jm'].astype('str').tolist()
 
     tfidf = TfidfVectorizer(lowercase=False, tokenizer=tokenizer)
-    logistic = LogisticRegression(C=10.0, penalty='l2', random_state=0)
+    logistic = LogisticRegression(C=1000.0, penalty='l2', random_state=0)
     pipe = Pipeline([('tfidf', tfidf), ('clf', logistic)])
 
     # 학습

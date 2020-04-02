@@ -33,7 +33,7 @@ def preprocessing(text):
     return text
 
 def jm_preprocessing(text):
-    if '징역' in text:
+    if ('징역' in text) or ('집행유예' in text) or ('집행 유예' in text):
         return '1'
 
     else:
@@ -63,10 +63,11 @@ def step1_getData():
 
     prec['law_title'].fillna('1', inplace=True)
     prec['law_jumoon'] = law_jumoon
+    prec['law_title'] = prec['law_title'].apply(tokenizer_nouns)
     prec['token_jm'] = prec['law_jumoon'].apply(tokenizer_nouns)
     prec['law_jm'] = prec['token_jm'].apply(jm_preprocessing)
 
     df = prec[['law_title', 'law_jm']]
     print(df)
 
-    df.to_csv('prec_data.csv', mode='w')
+    # df.to_csv('prec_data.csv', mode='w')

@@ -6,17 +6,16 @@ def step4_using():
         pipe = pickle.load(fp)
 
     while True:
-        keyword = input("사건명을 입력하세요 :")
+        keyword = input("범죄 유형을 입력하세요 :")
 
         # 데이터를 입력해 결과를 가져온다.
         y = pipe.predict([keyword])
         rate = pipe.predict_proba([keyword]) * 100
         rate = np.max(rate)
 
-        print(type(y))
-        print(y)
+        # print(y)
 
-        if y == 1:
+        if y == '1':
             print('징역!!')
         else :
             print('무죄!!')
